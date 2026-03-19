@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(grep -rn type.*=.*tool-invocation c:Userst.toustsikDownloadsuigensrc)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(npm audit:*)"
     ]
   }
 }
