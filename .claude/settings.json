@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(grep -rn type.*=.*tool-invocation c:Userst.toustsikDownloadsuigensrc)"
+    ]
+  }
+}
