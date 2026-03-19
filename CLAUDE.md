@@ -101,6 +101,17 @@ src/
 - Serialized to/from JSON for persistence in `Project.data`
 - Claude's tools operate on this in-memory representation
 
+**Live Preview Pipeline**
+- `PreviewFrame` renders generated code in a sandboxed `<iframe>`
+- `lib/transform/jsx-transformer.ts` uses `@babel/standalone` (browser-side) to transpile JSX/TSX to plain JS
+- An import map is injected into the iframe's HTML so relative imports resolve between virtual files; missing imports get placeholder stub modules
+- Entry point is `App.jsx` or `App.tsx` (falls back to `index.jsx`/`index.tsx`)
+- CSS imports are stripped before Babel runs (they'd cause parse errors)
+
+**State Management (React Contexts)**
+- `lib/contexts/file-system-context.tsx`: Provides `VirtualFileSystem` state app-wide; exposes `getAllFiles`, `refreshTrigger`, etc. — use `useFileSystem()` to access
+- `lib/contexts/chat-context.tsx`: Holds chat messages and streaming state — use `useChat()` to access
+
 **Server Actions vs API Routes**
 - `src/actions/`: Server actions for database queries (getUser, getProjects, etc.)—use `"use server"` directive
 - `src/app/api/chat/route.ts`: API route for streaming AI responses (POST /api/chat)
